@@ -1,22 +1,18 @@
 <html>
     <head></head>
     <body>
-        Strings
+        Arrays
         <script>
-            let title = 'Mr';
-            let name = 'Pablo'
-            let sentence = 'Hello ' + title + ' ' + name;
+            let weapons = ['sword', 'laser gun', 'stick', 'axe'];
 
-            console.log(sentence);
+            console.log(weapons.length);
 
-            let s = sentence.toUpperCase();
+            weapons.push('knife', 'laser knife');
+            weapons.pop();
+            weapons.splice(1, 2);
 
-            sentence = sentence.toLowerCase();
+            console.log(weapons);
 
-            let a = 'Hello World JavaScript';
-            let b;
-
-            b = a.slice(6, 11);
         </script>
     </body>
 </html>
