@@ -1,17 +1,12 @@
 <html>
     <head></head>
     <body>
-        Arrays
+        Multi-dimentional Arrays
         <script>
-            let weapons = ['sword', 'laser gun', 'stick', 'axe'];
+            let a = [23, 33, ['a', 12, [4, 5, 6]], 32];
+            a[2][2][1] = 10;
 
-            console.log(weapons.length);
-
-            weapons.push('knife', 'laser knife');
-            weapons.pop();
-            weapons.splice(1, 2);
-
-            console.log(weapons);
+            console.log(a);
 
         </script>
     </body>
