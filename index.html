@@ -1,19 +1,15 @@
 <html>
     <head></head>
     <body>
-        Arrays and Objects
+        Function
         <script>
-            let enemies = [
-                {x: 10, y: 50, energy: 100},
-                {x: 11, y: 55, energy: 1},
-                {x: 12, y: 50, energy: 50},
-                {x: 13, y: 55, energy: 10},
-                {x: 14, y: 50, energy: 30}
-            ];
+            function converter(m) {
+                let c = m * 100;
+                return c;
+            }
 
-            enemies[3].energy = 12;
-
-            console.log(enemies);
+            let a = 3;
+            console.log(converter(10));
         </script>
     </body>
 </html>
