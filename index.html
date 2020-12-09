@@ -1,13 +1,19 @@
 <html>
     <head></head>
     <body>
-        Multi-dimentional Arrays
+        Arrays and Objects
         <script>
-            let a = [23, 33, ['a', 12, [4, 5, 6]], 32];
-            a[2][2][1] = 10;
+            let enemies = [
+                {x: 10, y: 50, energy: 100},
+                {x: 11, y: 55, energy: 1},
+                {x: 12, y: 50, energy: 50},
+                {x: 13, y: 55, energy: 10},
+                {x: 14, y: 50, energy: 30}
+            ];
 
-            console.log(a);
+            enemies[3].energy = 12;
 
+            console.log(enemies);
         </script>
     </body>
 </html>

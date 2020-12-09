@@ -10,7 +10,7 @@
   </style>
 </head>
 <body>
-  <h1>Challenge - Add a Player Object</h1>
+  <h1>Challenge - Adding Enemies</h1>
   <canvas id="mycanvas" width="640" height="360" ></canvas>
   <script>
     window.addEventListener("load",function() {
@@ -21,6 +21,19 @@
 
       //keep the game going
       var gameLive = true;
+
+      /*
+
+      ///////////////////
+
+      CHALLENGE - Add enemies to the game
+
+      Add two new enemies:
+
+      -enemy on 300 for x, 100 for y, speed of 1. keep same w and h
+      -enemy on 140 for x, 300 for y, speed of 1. keep same w and h
+
+      */
 
       //enemies
       var enemies = [
@@ -51,36 +64,32 @@
           speedY: 5,
           w: 40,
           h: 40
+        },
+        {
+          x: 300,
+          y: 100,
+          speedY: 1,
+          w: 40,
+          h: 40
+        },
+        {
+          x: 140,
+          y: 300,
+          speedY: 1,
+          w: 40,
+          h: 40
         }
       ];
 
       //the player object
-      /**
-      /////////////////////////////////////////////////
-
-      CHALLENGE - Create an object to represent the player
-      
-      -create a variable called player
-
-      -it should be an object with the following properties: x with a value of 10, y with a value of 160, speedX with a value of 2.5, isMoving with a value of 0, w with a value of 40, h with a value of 40.
-
-      ////////////////////////////////////////////////
-      
-      create it bellow, outside of this commenting area!
-      */
-
-      let player = {
+      var player = {
         x: 10,
         y: 160,
-        speedX = 2.5,
-        isMoving = 0,
-        w = 40,
-        h = 40
+        speedX: 2.5,
+        isMoving: 0,
+        w: 40,
+        h: 40
       };
-
-
-
-
 
       //the goal object
       var goal = {
@@ -89,7 +98,6 @@
         w: 50,
         h: 36
       }
-      
 
       var sprites = {};
 
