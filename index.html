@@ -1,25 +1,45 @@
 <html>
-    <head></head>
+    <head>
+        <title>Animated Canvas</title>
+        <style>
+            canvas {
+                border: 1px solid black;
+            }
+        </style>
+    </head>
     <body>
-        Function
+        <h1>Animated Canvas</h1>
+        <canvas id="mycanvas" width="500" height="300"></canvas>
         <script>
-            let fly = function() {
-                console.log('You are flying ');
+            let x = 10;
+            let y = 10;
+            let w = 20;
+            let h = 30;
+
+            let speed = 2;
+
+            let canvas = document.getElementById('mycanvas');
+            let ctx = canvas.getContext('2d');
+
+            ctx.fillStyle = 'rgb(200, 0, 200)';
+            ctx.fillRect(50, 40, 100, 30);
+
+            ctx.fillStyle = 'rgb(100, 0, 200)';
+            ctx.fillRect(50, 140, 100, 30);
+
+            let update = function() {
+                x = x + speed;
+                console.log(x);
             }
 
-            let player = {
-                x: 10,
-                y: 20,
-                energy: 100,
-                superpower: function() {
-                    console.log('no superpower');
-                }
-            };
+            let step = function() {
+                update();
+                // draw();
 
-            player.superpower();
+                window.requestAnimationFrame(step);
+            }
 
-            player.superpower = fly;
-            player.superpower();
+            step();
         </script>
     </body>
 </html>
