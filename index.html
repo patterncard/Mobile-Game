@@ -3,13 +3,23 @@
     <body>
         Function
         <script>
-            function converter(m) {
-                let c = m * 100;
-                return c;
+            let fly = function() {
+                console.log('You are flying ');
             }
 
-            let a = 3;
-            console.log(converter(10));
+            let player = {
+                x: 10,
+                y: 20,
+                energy: 100,
+                superpower: function() {
+                    console.log('no superpower');
+                }
+            };
+
+            player.superpower();
+
+            player.superpower = fly;
+            player.superpower();
         </script>
     </body>
 </html>
