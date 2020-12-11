@@ -24,17 +24,37 @@
             ctx.fillStyle = 'rgb(200, 0, 200)';
             ctx.fillRect(50, 40, 100, 30);
 
-            ctx.fillStyle = 'rgb(100, 0, 200)';
-            ctx.fillRect(50, 140, 100, 30);
-
             let update = function() {
+                if(x >= 470) {
+                    x = 470;
+                    speed = -speed;
+                } else if (x <= 10) {
+                    x = 10;
+                    speed = -speed;
+                }
                 x = x + speed;
-                console.log(x);
+
+                blueZone = x > 0 && x < 150;
+                greenZone = !blueZone && x < 300;
             }
 
+            let draw = function() {
+                ctx.clearRect(0, 0, 500, 300);
+
+                if(blueZone){
+                    ctx.fillStyle = '#3333FF';
+                } else if (greenZone) {
+                    ctx.fillStyle = '#00CC66';
+                } else {
+                    ctx.fillStyle = 'rgb(200, 0, 100';
+                }   
+
+                // ctx.fillStyle = 'rgb(200, 0, 100)';
+                ctx.fillRect(x, y, w, h);
+            }
             let step = function() {
                 update();
-                // draw();
+                draw() ; 
 
                 window.requestAnimationFrame(step);
             }
