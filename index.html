@@ -9,9 +9,10 @@
   </style>
 </head>
 <body>
-  <h1>forEach</h1>
+  <h1>Player and Load Event</h1>
   <canvas id="mycanvas" width="640" height="360" ></canvas>
   <script>
+    window.addEventListener('load', function(){
 
     //constants
     var GAME_WIDTH = 640;
@@ -49,6 +50,15 @@
       }
     ];
 
+    let player = {
+      x: 10,
+      y: 160,
+      speedX: 2,
+      w: 40,
+      h:40,
+      isMoving: false
+    }
+
     //grab the canvas and context
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
@@ -56,12 +66,24 @@
     //update the logic
     var update = function() {
 
+      if(player.isMoving){
+        player.x += player.speedX;  
+      }
       var i = 0;
       var n = enemies.length;
 
       //update the position of all enemies
       enemies.forEach(function(element){
         element.y += element.speedY;
+
+        if(element.y <= 10){
+          element.y = 10;
+          element.speedY *= -1;
+        }
+        else if(element.y >= GAME_HEIGHT - 50){
+          element.y = GAME_HEIGHT - 50;
+          element.speedY *= -1;
+        }
       });
     };
 
@@ -69,11 +91,14 @@
     var draw = function() {
       //clear the canvas
       ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
-      ctx.fillStyle = "#3333FF";
+
+      ctx.fillStyle = "#00FF00";
+      ctx.fillRect(player.x, player.y, player.w, player.h);
 
       //draw all enemies
+      ctx.fillStyle = "#3333FF";
       enemies.forEach(function(element){
-        ctx.fillRect(element.x, element.y, element.w, element.h);
+      ctx.fillRect(element.x, element.y, element.w, element.h);
       });
     };
 
@@ -88,6 +113,7 @@
 
     //initial kick
     step();
+    });
 
   </script>
 </body>
