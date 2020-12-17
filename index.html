@@ -1,15 +1,20 @@
 <html>
 <head>
+  <mata name="viewport" content="width=device-width, user-scalable=no">
   <title></title>
   <style>
     canvas {
-      border: 1px solid black;
       width: 100%;
+    }
+    body {
+      padding: 0;
+      margin: 0;
+      background-color: black;
     }
   </style>
 </head>
 <body>
-  <h1>Player and Load Event</h1>
+ <!-- <h1>Touch Events and Viewport</h1>-->
   <canvas id="mycanvas" width="640" height="360" ></canvas>
   <script>
     window.addEventListener('load', function(){
@@ -59,9 +64,22 @@
       isMoving: false
     }
 
+    let movePlayer = function(){
+      player.isMoving = true;
+    }
+
+    let stopPlayer = function(){
+      player.isMoving = false;
+    }
+
     //grab the canvas and context
     var canvas = document.getElementById("mycanvas");
     var ctx = canvas.getContext("2d");
+
+    canvas.addEventListener("mousedown", movePlayer);
+    canvas.addEventListener("mouseup", stopPlayer);
+    canvas.addEventListener("touchstart", movePlayer);
+    canvas.addEventListener("touchend", stopPlayer);
 
     //update the logic
     var update = function() {
