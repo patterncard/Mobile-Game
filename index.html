@@ -23,6 +23,8 @@
     var GAME_WIDTH = 640;
     var GAME_HEIGHT = 360;
 
+    let gameLife = true;
+
     //enemies
     var enemies = [
       {
@@ -92,6 +94,13 @@
 
       //update the position of all enemies
       enemies.forEach(function(element){
+
+        if(checkCollision(player, element)){
+          gameLife = false;
+        alert('Game Over');
+        window.location = " ";
+        }
+
         element.y += element.speedY;
 
         if(element.y <= 10){
@@ -126,8 +135,17 @@
       update();
       draw();
 
-      window.requestAnimationFrame(step);
+      if(gameLife){
+        window.requestAnimationFrame(step);
+      }
     };
+
+    let checkCollision = function(rect1, rect2){
+      let closeOnWidth = Math.abs(rect1.x - rect2.x) <= Math.max(rect1.w, rect2.w);
+      let closeOnHeight = Math.abs(rect1.y - rect2.y) <= Math.max(rect1.h, rect2.h);
+
+      return closeOnHeight && closeOnWidth;
+    }
 
     //initial kick
     step();
