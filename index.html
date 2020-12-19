@@ -35,14 +35,14 @@
         h: 40 //heght
       },
       {
-        x: 260,
+        x: 220,
         y: 100,
         speedY: 2,
         w: 40,
         h: 40
       },
       {
-        x: 380,
+        x: 320,
         y: 100,
         speedY: 3,
         w: 40,
@@ -51,7 +51,7 @@
       {
         x: 450,
         y: 100,
-        speedY: 7,
+        speedY: 4,
         w: 40,
         h: 40
       }
@@ -65,6 +65,15 @@
       h:40,
       isMoving: false
     }
+
+    let goal = {
+      x: 580,
+      y: 160,
+      w: 50,
+      h: 36
+    }
+
+    let sprites = {};
 
     let movePlayer = function(){
       player.isMoving = true;
@@ -83,8 +92,27 @@
     canvas.addEventListener("touchstart", movePlayer);
     canvas.addEventListener("touchend", stopPlayer);
 
+    let load = function(){
+      sprites.player = new Image();
+      sprites.player.src = 'images/hero.png';
+
+      sprites.background = new Image();
+      sprites.background.src = 'images/floor.png';
+
+      sprites.enemy = new Image();
+      sprites.enemy.src = 'images/enemy.png';
+
+      sprites.goal = new Image
+      sprites.goal.src = 'images/chest.png';
+    }
+
     //update the logic
     var update = function() {
+      if(checkCollision(player, goal)){
+        gameLife = false;
+        alert('You won the game');
+        window.location = " ";
+      }
 
       if(player.isMoving){
         player.x += player.speedX;  
@@ -119,14 +147,12 @@
       //clear the canvas
       ctx.clearRect(0,0,GAME_WIDTH,GAME_HEIGHT);
 
-      ctx.fillStyle = "#00FF00";
-      ctx.fillRect(player.x, player.y, player.w, player.h);
-
-      //draw all enemies
-      ctx.fillStyle = "#3333FF";
-      enemies.forEach(function(element){
-      ctx.fillRect(element.x, element.y, element.w, element.h);
-      });
+      ctx.drawImage(sprites.background, 0, 0);
+      ctx.drawImage(sprites.player, player.x, play.y);
+      enemies.forEach(function(element, index){
+        ctx.drawImage(sprites.enemy, element.x, element.y);
+      })
+      ctx.drawImage(sprites.goal, goal.x, goal.y);
     };
 
     //gets executed multiple times per second
@@ -148,6 +174,7 @@
     }
 
     //initial kick
+    load();
     step();
     });
 
