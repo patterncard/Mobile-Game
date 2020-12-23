@@ -133,13 +133,18 @@
 
           ///////////////////////////////
           */
-          
-          for(i = 1; i < 20; i++){
+            level ++;
+
             player.x = 10;
             player.y = 160;
+                        
+            enemies.forEach(function(element, index){
+              element.speedY += element.speedY/Math.abs(element.speedY);
+            })
             
-            // math.abs(enemies.speedY) += 1;
-          }                    
+            console.log(level);
+            console.log(enemies);
+                           
         }
 
         //update player
